@@ -135,7 +135,8 @@ namespace AsteroidsGame
             foreach (Asteroid obj in _asteroids)
                 obj?.Draw();
 
-            _bullet?.Draw();
+            //_bullet?.Draw();
+            foreach (Bullet b in _bullets) b.Draw();
 
             _ship?.Draw();
             if (_ship != null)
