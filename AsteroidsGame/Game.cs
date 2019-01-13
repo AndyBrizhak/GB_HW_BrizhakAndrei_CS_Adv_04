@@ -2,6 +2,8 @@
 using System.Windows.Forms;
 using System.Drawing;
 using System.IO; // для работы с потоками ввода-вывода
+using System.Collections.Generic;
+
 
 //Брижак Андрей Домашнее задание по курсу C# уровень 2 урок 4
 
@@ -39,10 +41,15 @@ namespace AsteroidsGame
         /// </summary>
         public static BaseObject[] _objs;
 
+        ///// <summary>
+        ///// Обьект типа Bullet
+        ///// </summary>
+        //private static Bullet _bullet;
+
         /// <summary>
-        /// Обьект типа Bullet
+        /// Коллекция пуль
         /// </summary>
-        private static Bullet _bullet;
+        private static List<Bullet> _bullets = new List<Bullet>();
 
         /// <summary>
         /// массив объектов Asteroid
@@ -96,7 +103,9 @@ namespace AsteroidsGame
         {
             if (e.KeyCode == Keys.ControlKey)
             {
-                _bullet = new Bullet(new Point(_ship.Rect.X + 10, _ship.Rect.Y + 4), new Point(4, 0), new Size(4, 1));
+                //_bullet = new Bullet(new Point(_ship.Rect.X + 10, _ship.Rect.Y + 4), new Point(4, 0), new Size(4, 1));
+                _bullets.Add(new Bullet(new Point(_ship.Rect.X + 10, _ship.Rect.Y + 4), new Point(4, 0), new Size(4, 1)));
+
             }
             if (e.KeyCode == Keys.Up) _ship.Up();
             if (e.KeyCode == Keys.Down) _ship.Down();
