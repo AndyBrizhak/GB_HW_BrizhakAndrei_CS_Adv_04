@@ -54,6 +54,7 @@
     <Compile Include="Game.cs" />
     <Compile Include="Healthpack.cs" />
     <Compile Include="ICloneable.cs" />
+    <Compile Include="ICollision.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
