@@ -162,6 +162,7 @@ namespace AsteroidsGame
         {
             _objs = new BaseObject[30];
             _asteroids = new Asteroid[3];
+           
             _healthpacks = new Healthpack[3];
             var rnd = new Random();
             for (var i = 0; i < _objs.Length; i++)
@@ -175,6 +176,14 @@ namespace AsteroidsGame
                 int r = rnd.Next(5, 50);
                 _asteroids[i] = new Asteroid(new Point(800, rnd.Next(0, Game.Height)), new Point(-r / 5, r), new
                     Size(r, r));
+            }
+
+            for (var i = 0; i < 3; i++)
+            {
+                int r = rnd.Next(5, 50);
+                _listAsteroids.Add(new Asteroid(new Point(800, rnd.Next(0, Game.Height)), new Point(-r / 5, r), new Size(r, r)));
+                //_asteroids[i] = new Asteroid(new Point(800, rnd.Next(0, Game.Height)), new Point(-r / 5, r), new
+                //    Size(r, r));
             }
 
             for (var i = 0; i < _healthpacks.Length; i++)
