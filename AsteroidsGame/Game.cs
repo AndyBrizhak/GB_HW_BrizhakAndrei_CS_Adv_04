@@ -93,7 +93,7 @@ namespace AsteroidsGame
             Height = form.Height;
             CheckSizeScreen(Width, Height);
             Buffer = _context.Allocate(g, new Rectangle(0, 0, Width, Height));
-            Load();
+           // Load();
             _timer.Start();
             _timer.Tick += Timer_Tick;
             form.KeyDown += Form_KeyDown;
@@ -143,12 +143,17 @@ namespace AsteroidsGame
             foreach (BaseObject obj in _objs)
                 obj.Draw();
 
-            //foreach (Asteroid obj in _asteroids)
-            //    obj?.Draw();
+
+            //CurLev++;
+            //// проверка размера коллекции и добавление элементов 
+            //if (_listAsteroids.Count == 0)
+            //{
+            //    AddAsteroidsList(Rnd, CurLev);
+            //}
 
             foreach (Asteroid a in _listAsteroids) a?.Draw();  //прорисовка каждого существующего астероида в коллекции
 
-            //_bullet?.Draw();
+
             foreach (Bullet b in _bullets) b.Draw();
 
             _ship?.Draw();
@@ -230,7 +235,7 @@ namespace AsteroidsGame
             //{
             //    if (_asteroids[i] == null) continue;    //+
             //    _asteroids[i].Update();                 //+
-                
+
             //    for (int j = 0; j < _bullets.Count; j++)
             //        if (_asteroids[i] != null && _bullets[j].Collision(_asteroids[i]))
             //        {
@@ -249,10 +254,11 @@ namespace AsteroidsGame
             //    if (_ship.Energy <= 0) _ship?.Die();                    //+
             //}
 
-
+            
             // проверка размера коллекции и добавление элементов 
-            if (_listAsteroids.Count==0)
+            if (_listAsteroids.Count == 0)
             {
+                CurLev++;
                 AddAsteroidsList(Rnd, CurLev);
             }
             //обработка коллекции астероидов
@@ -333,16 +339,21 @@ namespace AsteroidsGame
         /// <param name="msg"></param>
         public static void MessageToFile(string msg)
         {
-            try
-            {
+            
                 fileOut?.WriteLine(msg);
+            
+            
+            
+            //try
+            //{
+                
 
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine(e);
+            //    throw;
+            //}
         }
     }
 }
