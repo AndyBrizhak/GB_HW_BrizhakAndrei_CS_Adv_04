@@ -140,6 +140,8 @@ namespace AsteroidsGame
             foreach (Asteroid obj in _asteroids)
                 obj?.Draw();
 
+            foreach (Asteroid a in _listAsteroids) a?.Draw();  //прорисовка каждого существующего астероида в коллекции
+
             //_bullet?.Draw();
             foreach (Bullet b in _bullets) b.Draw();
 
