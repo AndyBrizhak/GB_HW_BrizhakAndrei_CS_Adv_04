@@ -242,7 +242,6 @@ namespace AsteroidsGame
 
 
             //обработка коллекции астероидов
-            //foreach (var asteroid in _listAsteroids)
             for (int i = 0; i < _listAsteroids.Count; i++)
             {
                 var asteroid = _listAsteroids[i];
@@ -254,11 +253,18 @@ namespace AsteroidsGame
                         _ship.BonusPlus(Rnd.Next(1, 10));
                         _bullets[j].MessageDestroyed();
                         System.Media.SystemSounds.Hand.Play();
-                        asteroid = null;
-                       // _listAsteroids.Remove(asteroid);
+                       // asteroid = null;
+                        _listAsteroids.Remove(asteroid);
                        _bullets.RemoveAt(j);
                         j--;
                     }
+
+                if (asteroid == null || !_ship.Collision(asteroid)) continue;
+                _ship.LEnergy();
+                _ship?.EnergyLow(Rnd.Next(1, 10));                      //+
+                System.Media.SystemSounds.Asterisk.Play();              //+    
+                if (_ship.Energy <= 0) _ship?.Die();
+
             }
 
             for (var i = 0; i < _healthpacks.Length; i++)
