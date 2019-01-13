@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Drawing;
-//Брижак Андрей Домашнее задание по курсу C# уровень 2 урок 3
+//Брижак Андрей Домашнее задание по курсу C# уровень 2 урок 4
 
 namespace AsteroidsGame
 {
