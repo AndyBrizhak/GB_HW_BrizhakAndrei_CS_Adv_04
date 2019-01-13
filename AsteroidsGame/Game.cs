@@ -65,6 +65,16 @@ namespace AsteroidsGame
         private static Healthpack[] _healthpacks;
         static StreamWriter fileOut = new StreamWriter("t.txt", true);
 
+        /// <summary>
+        /// Стартовый уровень сложности/количество астероидов
+        /// </summary>
+        private static int StartLev = 1;
+
+        /// <summary>
+        /// Текущий уровень сложности/количество астероидов
+        /// </summary>
+        private static int CurLev;
+
 
         static Game()
         {
@@ -174,7 +184,9 @@ namespace AsteroidsGame
             //        Size(r, r));
             //}
 
-            AddAsteroidsList(Rnd, 3);// добавлено 3 астероида в коллекцию
+
+            AddAsteroidsList(Rnd, StartLev);// добавление астероида в коллекцию
+            CurLev = StartLev;
 
             for (var i = 0; i < _healthpacks.Length; i++)
             {
@@ -200,6 +212,8 @@ namespace AsteroidsGame
 
             }
         }
+
+        //private static void CheckSizeC
 
         /// <summary>
         /// изменения состояния объектов
@@ -236,6 +250,11 @@ namespace AsteroidsGame
             //}
 
 
+            // проверка размера коллекции и добавление элементов 
+            if (_listAsteroids.Count==0)
+            {
+                AddAsteroidsList(Rnd, CurLev);
+            }
             //обработка коллекции астероидов
             for (int i = 0; i < _listAsteroids.Count; i++)
             {
