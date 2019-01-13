@@ -132,7 +132,7 @@ namespace AsteroidsGame
         {
             MessageDie?.Invoke();   //+
             Console.WriteLine("Starship died!"); // Вывод сообщения в консоль
-            Game.MessageToFile(" Starship died! ");
+                //Game.MessageToFile(" Starship died! ");
 
         }
 

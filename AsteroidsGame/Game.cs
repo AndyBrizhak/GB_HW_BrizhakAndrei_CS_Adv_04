@@ -258,7 +258,7 @@ namespace AsteroidsGame
             // проверка размера коллекции и добавление элементов 
             if (_listAsteroids.Count == 0)
             {
-                CurLev++;
+                CurLev= CurLev*2;
                 AddAsteroidsList(Rnd, CurLev);
             }
             //обработка коллекции астероидов
