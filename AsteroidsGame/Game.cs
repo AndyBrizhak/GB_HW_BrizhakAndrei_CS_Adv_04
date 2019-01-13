@@ -178,12 +178,11 @@ namespace AsteroidsGame
                     Size(r, r));
             }
 
-            for (var i = 0; i < 3; i++)
+            for (var i = 0; i < 3; i++)  // добавлено 3 астероида в коллекцию
             {
                 int r = rnd.Next(5, 50);
                 _listAsteroids.Add(new Asteroid(new Point(800, rnd.Next(0, Game.Height)), new Point(-r / 5, r), new Size(r, r)));
-                //_asteroids[i] = new Asteroid(new Point(800, rnd.Next(0, Game.Height)), new Point(-r / 5, r), new
-                //    Size(r, r));
+               
             }
 
             for (var i = 0; i < _healthpacks.Length; i++)
@@ -239,6 +238,27 @@ namespace AsteroidsGame
                _ship?.EnergyLow(Rnd.Next(1, 10));                      //+
                 System.Media.SystemSounds.Asterisk.Play();              //+    
                 if (_ship.Energy <= 0) _ship?.Die();                    //+
+            }
+
+
+            //обработка коллекции астероидов
+            //foreach (var asteroid in _listAsteroids)
+            for (int i = 0; i < _listAsteroids.Count; i++)
+            {
+                var asteroid = _listAsteroids[i];
+                if (asteroid == null) continue;
+                asteroid.Update();
+                for (int j = 0; j < _bullets.Count; j++)
+                    if (asteroid != null && _bullets[j].Collision(asteroid))
+                    {
+                        _ship.BonusPlus(Rnd.Next(1, 10));
+                        _bullets[j].MessageDestroyed();
+                        System.Media.SystemSounds.Hand.Play();
+                        asteroid = null;
+                       // _listAsteroids.Remove(asteroid);
+                       _bullets.RemoveAt(j);
+                        j--;
+                    }
             }
 
             for (var i = 0; i < _healthpacks.Length; i++)
