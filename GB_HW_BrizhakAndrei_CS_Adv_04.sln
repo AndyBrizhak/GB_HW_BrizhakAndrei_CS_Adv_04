@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsteroidsGame", "AsteroidsG
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task02a_GenericCollectionInt", "Task02a_GenericCollectionInt\Task02a_GenericCollectionInt.csproj", "{6325A66A-69BD-45B3-999D-87EDE4CBBDD2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task2b_GenericCollection", "Task2b_GenericCollection\Task2b_GenericCollection.csproj", "{F44282BF-8CFB-4947-8479-78AF662760A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6325A66A-69BD-45B3-999D-87EDE4CBBDD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6325A66A-69BD-45B3-999D-87EDE4CBBDD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6325A66A-69BD-45B3-999D-87EDE4CBBDD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F44282BF-8CFB-4947-8479-78AF662760A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F44282BF-8CFB-4947-8479-78AF662760A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F44282BF-8CFB-4947-8479-78AF662760A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F44282BF-8CFB-4947-8479-78AF662760A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
