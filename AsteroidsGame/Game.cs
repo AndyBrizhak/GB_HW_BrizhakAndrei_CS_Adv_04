@@ -188,25 +188,39 @@ namespace AsteroidsGame
             foreach (BaseObject obj in _objs) //+
                 obj.Update();      //+
 
-            _bullet?.Update(); //+
+            //_bullet?.Update(); //+
+            foreach (Bullet b in _bullets) b?.Update();
 
             for (var i = 0; i < _asteroids.Length; i++)    //+
             {
                 if (_asteroids[i] == null) continue;    //+
                 _asteroids[i].Update();                 //+
-                if (_bullet != null && _bullet.Collision(_asteroids[i])) //+
-                {
-                    _ship.BonusPlus(Rnd.Next(1, 10));
-                    _bullet.MessageDestroyed();
-                    System.Media.SystemSounds.Hand.Play();              //+
-                    _asteroids[i] = null;                               //+
-                    _bullet = null;
-                    continue;                                           //+
-                }
-                if (!_ship.Collision(_asteroids[i])) continue;
+                //if (_bullet != null && _bullet.Collision(_asteroids[i])) //+
+                //{
+                //    _ship.BonusPlus(Rnd.Next(1, 10));
+                //    _bullet.MessageDestroyed();
+                //    System.Media.SystemSounds.Hand.Play();              //+
+                //    _asteroids[i] = null;                               //+
+                //    _bullet = null;
+                //    continue;                                           //+
+                //}
+
+                for (int j = 0; j < _bullets.Count; j++)
+                    if (_asteroids[i] != null && _bullets[j].Collision(_asteroids[i]))
+                    {
+                        _ship.BonusPlus(Rnd.Next(1, 10));
+                        _bullets[j].MessageDestroyed();
+                        System.Media.SystemSounds.Hand.Play();
+                        _asteroids[i] = null;
+                        _bullets.RemoveAt(j);
+                        j--;
+                    }
+
+
+                //if (!_ship.Collision(_asteroids[i])) continue;
+                if (_asteroids[i] == null || !_ship.Collision(_asteroids[i])) continue;
                 _ship.LEnergy();
-                var rnd = new Random();                                 //+
-                _ship?.EnergyLow(rnd.Next(1, 10));                      //+
+               _ship?.EnergyLow(Rnd.Next(1, 10));                      //+
                 System.Media.SystemSounds.Asterisk.Play();              //+    
                 if (_ship.Energy <= 0) _ship?.Die();                    //+
             }
