@@ -41,20 +41,16 @@ namespace AsteroidsGame
         /// </summary>
         public static BaseObject[] _objs;
 
-        ///// <summary>
-        ///// Обьект типа Bullet
-        ///// </summary>
-        //private static Bullet _bullet;
-
+        
         /// <summary>
         /// Коллекция пуль
         /// </summary>
         private static List<Bullet> _bullets = new List<Bullet>();
 
-        /// <summary>
-        /// массив объектов Asteroid
-        /// </summary>
-        private static Asteroid[] _asteroids;
+        ///// <summary>
+        ///// массив объектов Asteroid
+        ///// </summary>
+        //private static Asteroid[] _asteroids;
 
         /// <summary>
         /// коллекция Астероидов
@@ -137,8 +133,8 @@ namespace AsteroidsGame
             foreach (BaseObject obj in _objs)
                 obj.Draw();
 
-            foreach (Asteroid obj in _asteroids)
-                obj?.Draw();
+            //foreach (Asteroid obj in _asteroids)
+            //    obj?.Draw();
 
             foreach (Asteroid a in _listAsteroids) a?.Draw();  //прорисовка каждого существующего астероида в коллекции
 
@@ -161,7 +157,7 @@ namespace AsteroidsGame
         public static void Load()
         {
             _objs = new BaseObject[30];
-            _asteroids = new Asteroid[3];
+            //_asteroids = new Asteroid[3];
            
             _healthpacks = new Healthpack[3];
             var rnd = new Random();
@@ -171,12 +167,12 @@ namespace AsteroidsGame
                 _objs[i] = new Star(new Point(800, rnd.Next(0, Game.Height)), new Point(-r, r), new Size(3, 3));
             }
 
-            for (var i = 0; i < _asteroids.Length; i++)
-            {
-                int r = rnd.Next(5, 50);
-                _asteroids[i] = new Asteroid(new Point(800, rnd.Next(0, Game.Height)), new Point(-r / 5, r), new
-                    Size(r, r));
-            }
+            //for (var i = 0; i < _asteroids.Length; i++)
+            //{
+            //    int r = rnd.Next(5, 50);
+            //    _asteroids[i] = new Asteroid(new Point(800, rnd.Next(0, Game.Height)), new Point(-r / 5, r), new
+            //        Size(r, r));
+            //}
 
             for (var i = 0; i < 3; i++)  // добавлено 3 астероида в коллекцию
             {
@@ -203,42 +199,31 @@ namespace AsteroidsGame
             foreach (BaseObject obj in _objs) //+
                 obj.Update();      //+
 
-            //_bullet?.Update(); //+
+            
             foreach (Bullet b in _bullets) b?.Update();
 
-            for (var i = 0; i < _asteroids.Length; i++)    //+
-            {
-                if (_asteroids[i] == null) continue;    //+
-                _asteroids[i].Update();                 //+
-                //if (_bullet != null && _bullet.Collision(_asteroids[i])) //+
-                //{
-                //    _ship.BonusPlus(Rnd.Next(1, 10));
-                //    _bullet.MessageDestroyed();
-                //    System.Media.SystemSounds.Hand.Play();              //+
-                //    _asteroids[i] = null;                               //+
-                //    _bullet = null;
-                //    continue;                                           //+
-                //}
+            //for (var i = 0; i < _asteroids.Length; i++)    //+
+            //{
+            //    if (_asteroids[i] == null) continue;    //+
+            //    _asteroids[i].Update();                 //+
+                
+            //    for (int j = 0; j < _bullets.Count; j++)
+            //        if (_asteroids[i] != null && _bullets[j].Collision(_asteroids[i]))
+            //        {
+            //            _ship.BonusPlus(Rnd.Next(1, 10));
+            //            _bullets[j].MessageDestroyed();
+            //            System.Media.SystemSounds.Hand.Play();
+            //            _asteroids[i] = null;
+            //            _bullets.RemoveAt(j);
+            //            j--;
+            //        }
 
-                for (int j = 0; j < _bullets.Count; j++)
-                    if (_asteroids[i] != null && _bullets[j].Collision(_asteroids[i]))
-                    {
-                        _ship.BonusPlus(Rnd.Next(1, 10));
-                        _bullets[j].MessageDestroyed();
-                        System.Media.SystemSounds.Hand.Play();
-                        _asteroids[i] = null;
-                        _bullets.RemoveAt(j);
-                        j--;
-                    }
-
-
-                //if (!_ship.Collision(_asteroids[i])) continue;
-                if (_asteroids[i] == null || !_ship.Collision(_asteroids[i])) continue;
-                _ship.LEnergy();
-               _ship?.EnergyLow(Rnd.Next(1, 10));                      //+
-                System.Media.SystemSounds.Asterisk.Play();              //+    
-                if (_ship.Energy <= 0) _ship?.Die();                    //+
-            }
+            //    if (_asteroids[i] == null || !_ship.Collision(_asteroids[i])) continue;
+            //    _ship.LEnergy();
+            //   _ship?.EnergyLow(Rnd.Next(1, 10));                      //+
+            //    System.Media.SystemSounds.Asterisk.Play();              //+    
+            //    if (_ship.Energy <= 0) _ship?.Die();                    //+
+            //}
 
 
             //обработка коллекции астероидов
