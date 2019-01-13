@@ -158,7 +158,7 @@ namespace AsteroidsGame
         {
             _objs = new BaseObject[30];
             //_asteroids = new Asteroid[3];
-           
+
             _healthpacks = new Healthpack[3];
             var rnd = new Random();
             for (var i = 0; i < _objs.Length; i++)
@@ -174,12 +174,7 @@ namespace AsteroidsGame
             //        Size(r, r));
             //}
 
-            for (var i = 0; i < 3; i++)  // добавлено 3 астероида в коллекцию
-            {
-                int r = rnd.Next(5, 50);
-                _listAsteroids.Add(new Asteroid(new Point(800, rnd.Next(0, Game.Height)), new Point(-r / 5, r), new Size(r, r)));
-               
-            }
+            AddAsteroidsList(Rnd, 3);// добавлено 3 астероида в коллекцию
 
             for (var i = 0; i < _healthpacks.Length; i++)
             {
@@ -189,6 +184,21 @@ namespace AsteroidsGame
             }
 
 
+        }
+
+        /// <summary>
+        /// Добавление астероидов в коллекцию
+        /// </summary>
+        /// <param name="rnd">ссылка на генератор случайных чисел для указания размера и местоположения</param>
+        /// <param name="c">количество элементов в коллекции астероидов</param>
+        private static void AddAsteroidsList(Random rnd, int c)
+        {
+            for (var i = 0; i < c; i++)  
+            {
+                int r = rnd.Next(5, 50);
+                _listAsteroids.Add(new Asteroid(new Point(800, rnd.Next(0, Game.Height)), new Point(-r / 5, r), new Size(r, r)));
+
+            }
         }
 
         /// <summary>
